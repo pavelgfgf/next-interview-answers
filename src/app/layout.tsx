@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import './globals.css';
-import Layout from './ui/Layout/Layout';
+import Layout from '../pages/article/ui/Layout/Layout';
 
 const plusJakartaSans = Roboto({
   subsets: ['latin', 'cyrillic'],

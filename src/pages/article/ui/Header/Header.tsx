@@ -2,18 +2,20 @@
 
 import Image from 'next/image';
 import styled from 'styled-components';
-import CustomLink from '@/src/ui/CustomLink/CustomLink';
+import CustomLink from '@/src/shared/ui/CustomLink/CustomLink';
 
 const HeaderMenu = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 87%;
   position: fixed;
-  width: 100%;
-  padding-inline: 24px;
+  padding-inline: 24px 24px;
   box-shadow: 0px 1px 2px 0px #0211251f;
   height: 56px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 1rem 0px 0px 150px;
+  border-radius: 20px;
 `;
 
 const Title = styled.h1`
@@ -38,6 +40,12 @@ const TextHeader = styled.p`
   font-weight: 400;
   line-height: 25px;
   font-size: 16px;
+  color: #808080;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #333;
+  }
 `;
 
 const Logo = styled.div`

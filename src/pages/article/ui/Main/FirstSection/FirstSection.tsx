@@ -1,9 +1,7 @@
-'use client';
-
 import styled from 'styled-components';
 
-const MainPage = styled.div`
-  min-height: 100vh;
+const Section = styled.div`
+  height: 700px;
   background-color: #ddd;
   display: flex;
   flex-direction: column;
@@ -12,16 +10,18 @@ const MainPage = styled.div`
   text-align: center;
 `;
 
-const Section = styled.section`
+const SectionWrapper = styled.section`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 1200px;
-  height: 555px;
-  background: linear-gradient(135deg, #3634a2, #3da02e);
+  width: 1110px;
+  height: 500px;
+  background: rgba(2, 36, 102, 0.884);
   border-radius: 50px;
   color: white;
   text-align: center;
+  box-shadow: 12px 8px 10px rgba(0, 0, 0, 0.3);
 `;
 
 const Content = styled.div`
@@ -42,7 +42,7 @@ const Title = styled.h1`
 const Subtitle = styled.h2`
   font-size: 1.5rem;
   font-weight: 400;
-  margin-bottom: 4rem;
+  margin-bottom: 5em;
   color: #ccc;
 `;
 
@@ -50,20 +50,18 @@ const Button = styled.button`
   font-size: 24px;
   margin-bottom: 20px;
   padding: 10px 20px;
-  background: rgba(10, 149, 47, 0.856);
+  background: rgba(163, 230, 53, 0.8);
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   color: #fff;
   cursor: pointer;
-  position: relative;
   overflow: hidden;
   width: 300px;
   height: 50px;
 
   &:before {
     content: '';
-    position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
@@ -73,7 +71,7 @@ const Button = styled.button`
   }
 
   &:hover {
-    background: rgb(183, 210, 103);
+    background: rgba(140, 197, 42, 0.8);
     transform: translateY(-4px) scale(1.02);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 
@@ -83,20 +81,20 @@ const Button = styled.button`
   }
 `;
 
-const Main = () => {
+const FirstSection = () => {
   return (
     <>
-      <MainPage>
-        <Section>
+      <Section>
+        <SectionWrapper>
           <Content>
             <Title>Платформа для подготовки</Title>
             <Subtitle>к техническому собеседованию</Subtitle>
             <Button>Подготовиться</Button>
           </Content>
-        </Section>
-      </MainPage>
+        </SectionWrapper>
+      </Section>
     </>
   );
 };
 
-export default Main;
+export default FirstSection;
