@@ -1,7 +1,16 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  compiler: {
+    styledComponents: {
+      ssr: true,
+      displayName: true,
+      pure: true,
+      cssProp: false,
+    },
+  },
+  experimental: {
+    optimizeCss: process.env.NODE_ENV === 'production',
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
