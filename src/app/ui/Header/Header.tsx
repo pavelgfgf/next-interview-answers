@@ -3,32 +3,24 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import styled from 'styled-components';
-import CustomLink from '@/src/shared/ui/CustomLink/CustomLink';
+import CustomLink from '@/src/lib/CustomLink/CustomLink';
 
 const HeaderMenu = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 85%;
-  position: fixed;
-  top: 2%;
+  width: 100%;
+  position: relative;
+  top: 0%;
   left: 50%;
   transform: translateX(-50%);
   padding: 0 24px;
   box-shadow: 0px 1px 2px 0px #0211251f;
   height: 56px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
   z-index: 1000;
 
   @media (max-width: 1024px) {
-    width: 95%;
-    border-radius: 16px;
-  }
-
-  @media (max-width: 768px) {
-    flex-direction: row;
-    gap: 10px;
+    width: 100%;
   }
 `;
 
@@ -50,6 +42,7 @@ const Title = styled.h1`
   font-weight: 800;
   line-height: 32px;
   font-size: 24px;
+  padding-right: 32px;
 `;
 
 const Logo = styled.div`
@@ -61,8 +54,11 @@ const LinkGroup = styled.div`
   align-items: center;
   gap: 16px;
 
+  /* Запрещаем перенос текста */
+  white-space: nowrap;
+
   @media (max-width: 768px) {
-    display: none;
+    display: none; /* Скрываем на мобильных */
   }
 `;
 
@@ -79,6 +75,36 @@ const TextHeader = styled.p`
 
   @media (max-width: 480px) {
     font-size: 14px;
+  }
+`;
+
+const LoginButton = styled.button`
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #005bbd;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+`;
+
+const LoginButtonMobile = styled(LoginButton)`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block; /* Показываем только на мобильных */
+    margin-left: 12px;
   }
 `;
 
@@ -136,8 +162,15 @@ const MobileMenu = styled.div<{ $isOpen: boolean }>`
     border-radius: 20px 20px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 999;
+
+    /* Запрещаем перенос текста в мобильном меню */
+    > * {
+      white-space: nowrap;
+    }
   }
 `;
+
+// Контейнер для кнопки "Войти", который всегда виден
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -146,14 +179,16 @@ const Header = () => {
   return (
     <>
       <HeaderMenu>
-        <CustomLink href="">
+        <CustomLink href="/">
           <TitleWrapper>
             <Logo>
-              <Image src="logo.svg" width={90} height={90} alt="logo" />
+              <Image src="/logo.svg" width={90} height={90} alt="logo" />
             </Logo>
             <Title>ПрофИТ</Title>
           </TitleWrapper>
         </CustomLink>
+
+        <LoginButtonMobile>Войти</LoginButtonMobile>
 
         <Burger $isOpen={isOpen} onClick={toggleMenu}>
           <span />
@@ -161,34 +196,31 @@ const Header = () => {
           <span />
         </Burger>
 
+        {/* Мобильное меню — без кнопки "Войти" */}
         <MobileMenu $isOpen={isOpen}>
-          <CustomLink href="">
-            <TextHeader>Тесты</TextHeader>
+          <CustomLink href="/interview">
+            <TextHeader>База вопросов</TextHeader>
           </CustomLink>
-          <CustomLink href="">
-            <TextHeader>Тренажер вопросов</TextHeader>
-          </CustomLink>
-          <CustomLink href="">
+          <CustomLink href="/tasks">
             <TextHeader>Задачи</TextHeader>
           </CustomLink>
-          <CustomLink href="">
+          <CustomLink href="/interview">
             <TextHeader>Техническое собеседование</TextHeader>
           </CustomLink>
         </MobileMenu>
 
+        {/* Группа ссылок — только на десктопе */}
         <LinkGroup>
-          <CustomLink href="">
-            <TextHeader>Тесты</TextHeader>
+          <CustomLink href="/interview">
+            <TextHeader>База вопросов</TextHeader>
           </CustomLink>
-          <CustomLink href="">
-            <TextHeader>Тренажер вопросов</TextHeader>
-          </CustomLink>
-          <CustomLink href="">
+          <CustomLink href="/tasks">
             <TextHeader>Задачи</TextHeader>
           </CustomLink>
-          <CustomLink href="">
+          <CustomLink href="/interview">
             <TextHeader>Техническое собеседование</TextHeader>
           </CustomLink>
+          <LoginButton>Войти</LoginButton>
         </LinkGroup>
       </HeaderMenu>
     </>

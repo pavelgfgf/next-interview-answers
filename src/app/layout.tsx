@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import './globals.css';
-import CustomQueryClientProvider from '../pages/lib/providers/CustomQueryProvider';
-import CustomThemeProvider from '../pages/lib/providers/CustomThemeProvider';
+import CustomQueryClientProvider from '../lib/providers/CustomQueryProvider';
+import CustomThemeProvider from '../lib/providers/CustomThemeProvider';
 
-const plusJakartaSans = Roboto({
+const roboto = Roboto({
+  weight: ['400', '500', '700'],
   subsets: ['latin', 'cyrillic'],
 });
 
@@ -20,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${plusJakartaSans.className}`}>
+      <body className={roboto.className}>
         <CustomQueryClientProvider>
           <CustomThemeProvider>{children}</CustomThemeProvider>
         </CustomQueryClientProvider>
