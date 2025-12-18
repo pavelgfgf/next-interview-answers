@@ -22,6 +22,10 @@ const HeaderMenu = styled.nav`
   @media (max-width: 1024px) {
     width: 100%;
   }
+
+  @media (max-width: 768px) {
+    padding: 0 12px;
+  }
 `;
 
 const TitleWrapper = styled.div`
@@ -105,6 +109,7 @@ const LoginButtonMobile = styled(LoginButton)`
   @media (max-width: 768px) {
     display: block; /* Показываем только на мобильных */
     margin-left: 12px;
+    margin-right: 8px;
   }
 `;
 
@@ -198,7 +203,7 @@ const Header = () => {
 
         {/* Мобильное меню — без кнопки "Войти" */}
         <MobileMenu $isOpen={isOpen}>
-          <CustomLink href="/interview">
+          <CustomLink href="/question">
             <TextHeader>База вопросов</TextHeader>
           </CustomLink>
           <CustomLink href="/tasks">
@@ -211,7 +216,7 @@ const Header = () => {
 
         {/* Группа ссылок — только на десктопе */}
         <LinkGroup>
-          <CustomLink href="/interview">
+          <CustomLink href="/question">
             <TextHeader>База вопросов</TextHeader>
           </CustomLink>
           <CustomLink href="/tasks">
@@ -220,7 +225,9 @@ const Header = () => {
           <CustomLink href="/interview">
             <TextHeader>Техническое собеседование</TextHeader>
           </CustomLink>
-          <LoginButton>Войти</LoginButton>
+          <CustomLink href="/auth/login">
+            <LoginButton>Войти</LoginButton>
+          </CustomLink>
         </LinkGroup>
       </HeaderMenu>
     </>

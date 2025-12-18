@@ -280,10 +280,10 @@ const Footer = () => {
                 <a href="#">Команда</a>
               </li>
               <li>
-                <a href="#">Вакансии</a>
+                <a href="#">Войти</a>
               </li>
               <li>
-                <a href="#">Новости</a>
+                <a href="#">Вакансии</a>
               </li>
             </LinksList>
           </Section>
@@ -292,16 +292,13 @@ const Footer = () => {
             <h3>Обучение</h3>
             <LinksList>
               <li>
-                <a href="/products">Тренажер вопросов</a>
+                <a href="/tasts">Задачи</a>
               </li>
               <li>
-                <a href="/features">Тесты</a>
+                <a href="/question">База вопросов</a>
               </li>
               <li>
-                <a href="/pricing">База вопросов</a>
-              </li>
-              <li>
-                <a href="/integrations">Техническое собеседование</a>
+                <a href="/interview">Техническое собеседование</a>
               </li>
             </LinksList>
           </Section>
